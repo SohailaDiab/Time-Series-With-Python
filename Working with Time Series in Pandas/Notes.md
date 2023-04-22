@@ -65,3 +65,46 @@ period.asfreq('D')
 >> Output:
 Period('2017-01-31', 'D')
 ```
+- Convert `Period` to `Timestamp` object, and back to a `Period` object:
+```py
+period.to_timestamp().to_period('M')
+
+>> Output:
+Period('2017-01', 'M')
+```
+## Data arithmetic:
+Starting out with:
+```py
+period = Period('2017-01', 'M')
+```
+
+- Addition:
+```py
+period + 2
+
+>> Output:
+Period('2017-03', 'M')
+```
+> Since it is a monthly frequency, adding 2 goes from January 2017 to March 2017.
+
+```py
+pd.Timestamp('2017-01-31', 'M') + 1
+
+>> Output:
+Timestamp('2017-02-28 00:00:00', freq='M')
+```
+> Timestamps can also have frequency information.
+
+## Creating a time series
+You need a sequence of dates to create a time series. For that, we will create a sequence of Timestamps using the pandas function `date_range`
+- `pd.date_range`:`start`, `end`, `periods`, `freq`
+```py
+index = pd.date_range(start='2017-01-01', periods=12, freq='M')
+index
+
+>> Output:
+DatetimeIndex(['2017-01-31', '2017-02-28', '2017-03-31', ...,
+              ['2017-09-30', '2017-10-31', '2017-11-30', '2017-12-31'],
+              dtype='datetime64[ns]', freq='M')
+```
+> The default is daily frequency 'D'
