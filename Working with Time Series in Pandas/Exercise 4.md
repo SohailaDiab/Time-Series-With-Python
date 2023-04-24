@@ -36,6 +36,7 @@ co.plot(subplots=True)
 plt.show()
 ```
 ```py
+>> Output:
                 Chicago  Los Angeles  New York
     date                                      
     2005-01-01    0.318        0.778     0.640
