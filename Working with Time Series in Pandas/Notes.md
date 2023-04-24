@@ -96,8 +96,8 @@ Timestamp('2017-02-28 00:00:00', freq='M')
 > Timestamps can also have frequency information.
 
 ## Creating a time series
-You need a sequence of dates to create a time series. For that, we will create a sequence of Timestamps using the pandas function `date_range`
-- `pd.date_range`:`start`, `end`, `periods`, `freq`
+You need a sequence of dates to create a time series. For that, we will create a sequence of Timestamps using the pandas function `date_range`.
+- `pd.date_range`:`start`, `end`, `periods`, `freq`.<br> Specify start date, end date/# of periods, and the frequency.
 ```py
 index = pd.date_range(start='2017-01-01', periods=12, freq='M')
 index
@@ -107,4 +107,32 @@ DatetimeIndex(['2017-01-31', '2017-02-28', '2017-03-31', ...,
               ['2017-09-30', '2017-10-31', '2017-11-30', '2017-12-31'],
               dtype='datetime64[ns]', freq='M')
 ```
-> The default is daily frequency 'D'
+> The default is daily frequency 'D'.
+> The function returns the sequence of dates as a DateTimeindex with frequency information.
+
+```py
+index[0]
+
+>> Output:
+Timestamp('2017-01-31 00:00:00', freq='M')
+```
+> The first element is a pandas Timestamp.
+
+### Convert DatimetimeIndex to PeriodIndex
+```py
+index.toPeriod()
+
+>> Output:
+PeriodIndex(['2017-01', '2017-02', '2017-03', ...,
+              ['2017-09', '2017-10', '2017-11', '2017-12'],
+              dtype='period[ns]', freq='M')
+```
+
+## Create a time series by setting the `DatimeTimeIndex`, as the index of the DataFrame.
+
+```py
+pd.DataFrame({data=data, index:index})
+```
+
+## Aliases and Attributes
+![image](https://user-images.githubusercontent.com/70928356/233877480-e28731fd-cca5-426d-b7ce-8e3e16c9fb4c.png)
