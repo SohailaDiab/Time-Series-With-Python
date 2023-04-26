@@ -1,0 +1,7 @@
+# 2. Changing the time series frequency: resampling
+It is common, since we usually want to convert two time series to a common frequency to analyze them together.
+
+- `DateTimeIndex`: set & change freq using `.asfreq()`
+- Frequency conversion affects the data:
+  - **Upsampling**: Missing data (NaNs)
+  - **Downsampling**: Aggregate existing data
